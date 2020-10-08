@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using estudo_asp_net_core.Models;
+using estudo_asp_net_core.Repository;
 
 namespace estudo_asp_net_core.Controllers {
     public class HomeController : Controller {
@@ -26,8 +27,8 @@ namespace estudo_asp_net_core.Controllers {
 
         [HttpPost]
         public ViewResult RsvpForm(GuestResponse guestResponse) {
-            // TODO: store response from guest
-            return View();
+            GuestResponseRepository.AddResponse(guestResponse);
+            return View("Thanks", guestResponse);
         }
 
         public IActionResult Privacy() {
