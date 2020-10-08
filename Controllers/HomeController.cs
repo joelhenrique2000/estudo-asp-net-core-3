@@ -33,7 +33,7 @@ namespace estudo_asp_net_core.Controllers {
         }
         
         public ViewResult ListResponses() {
-            return View(GuestResponseRepository.Responses.Where(r => r.WillAttend == true);
+            return View(GuestResponseRepository.Responses.Where(r => r.WillAttend == true));
         }
 
         public IActionResult Privacy() {
