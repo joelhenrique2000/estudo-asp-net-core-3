@@ -15,11 +15,8 @@ namespace estudo_asp_net_core.Controllers {
             _logger = logger;
         }
 
-        public ViewResult Index() {
-
-            int hour = DateTime.Now.Hour;
-            string viewModel = hour < 12 ? "Good Morning" : "Good Aftermoon";
-            return View("MyView", viewModel);
+        public IActionResult Index() {
+            return View();
         }
 
         public IActionResult Privacy() {
