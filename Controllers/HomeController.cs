@@ -15,8 +15,8 @@ namespace estudo_asp_net_core.Controllers {
             _logger = logger;
         }
 
-        public IActionResult Index() {
-            return View();
+        public string Index() {
+            return "Hello World";
         }
 
         public IActionResult Privacy() {
