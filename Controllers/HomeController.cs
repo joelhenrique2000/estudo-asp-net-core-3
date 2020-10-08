@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using estudo_asp_net_core.Models;
 using estudo_asp_net_core.Repository;
+using System.Linq;
 
 namespace estudo_asp_net_core.Controllers {
     public class HomeController : Controller {
@@ -29,6 +30,10 @@ namespace estudo_asp_net_core.Controllers {
         public ViewResult RsvpForm(GuestResponse guestResponse) {
             GuestResponseRepository.AddResponse(guestResponse);
             return View("Thanks", guestResponse);
+        }
+        
+        public ViewResult ListResponses() {
+            return View(GuestResponseRepository.Responses.Where(r => r.WillAttend == true);
         }
 
         public IActionResult Privacy() {
