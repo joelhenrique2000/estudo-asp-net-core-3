@@ -16,7 +16,10 @@ namespace estudo_asp_net_core.Controllers {
         }
 
         public ViewResult Index() {
-            return View("MyView");
+
+            int hour = DateTime.Now.Hour;
+            string viewModel = hour < 12 ? "Good Morning" : "Good Aftermoon";
+            return View("MyView", viewModel);
         }
 
         public IActionResult Privacy() {
