@@ -19,6 +19,10 @@ namespace estudo_asp_net_core.Controllers {
             return View();
         }
 
+        public ViewResult RsvpForm() {
+            return View();
+        }
+
         public IActionResult Privacy() {
             return View();
         }
