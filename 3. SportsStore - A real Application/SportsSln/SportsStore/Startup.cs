@@ -10,6 +10,7 @@ using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.EntityFrameworkCore;
 using SportsStore.Models;
+using SportsStore.Repository;
 
 namespace SportsStore
 {
@@ -31,6 +32,7 @@ namespace SportsStore
                     Configuration["ConnectionStrings:SportsStoreConnection"]
                 );
             });
+            services.AddScoped<IStoreRepository, EFStoreRepository>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
