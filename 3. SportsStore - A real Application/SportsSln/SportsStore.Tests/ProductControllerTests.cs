@@ -2,6 +2,7 @@
 using Moq;
 using SportsStore.Controllers;
 using SportsStore.Models;
+using SportsStore.Models.ViewModels;
 using SportsStore.Repository;
 using System.Collections.Generic;
 using System.Linq;
