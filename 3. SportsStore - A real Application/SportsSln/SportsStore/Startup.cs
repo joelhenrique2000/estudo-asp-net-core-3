@@ -36,7 +36,10 @@ namespace SportsStore
             services.AddRazorPages();
             services.AddDistributedMemoryCache();
             services.AddSession();
-            services.AddScoped<Cart>(sp => SessionCart.GetCart(sp));
+            services.AddScoped<Cart>(sp => {
+                Console.WriteLine(sp);
+                return SessionCart.GetCart(sp);
+            });
             services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
         }
 
