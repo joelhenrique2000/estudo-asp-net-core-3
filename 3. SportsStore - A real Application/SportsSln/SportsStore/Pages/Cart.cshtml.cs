@@ -11,8 +11,9 @@ namespace SportsStore.Pages
     {
         private IStoreRepository repository;
 
-        public CartModel(IStoreRepository repo) {
+        public CartModel(IStoreRepository repo, Cart cartService) {
             repository = repo;
+            Cart = cartService;
         }
 
         public Cart Cart { get; set; }
@@ -20,14 +21,15 @@ namespace SportsStore.Pages
 
         public void OnGet(string returnUrl)
         {
-            ReturnUrl = returnUrl ?? "/"; Cart = HttpContext.Session.GestJson<Cart>("cart") ?? new Cart();
+            ReturnUrl = returnUrl ?? "/";
         }
 
         public IActionResult OnPost(long productId, string returnUrl)
         {
-            Product product = repository.Products.FirstOrDefault(p => p.ProductID == productId);
-            Cart = HttpContext.Session.GestJson<Cart>("cart") ?? new Cart(); Cart.AddItem(product, 1);
-            HttpContext.Session.SetJson("cart", Cart); return RedirectToPage(new { returnUrl = returnUrl });
+            Product product = repository.Products
+                .FirstOrDefault(p => p.ProductID == productId);
+            Cart.AddItem(product, 1);
+            return RedirectToPage(new { returnUrl = returnUrl });
         }
     }
 }
